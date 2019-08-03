@@ -1,14 +1,41 @@
 function computerPlay() {
-    var things = ['Rock', 'Paper', 'Scissors'];
-    var thing = things[Math.floor(Math.random() * things.length)];
-    alert('The computer chose: ' + thing);
+    let things = ['rock', 'paper', 'scissors'];
+    let thing = things[Math.floor(Math.random() * things.length)];
+    return thing;
 }
 
-computerPlay();
+function userPlay() {
+    let choice = prompt('choose').toLowerCase();
+        return choice;
+}
 
-function singlePlay (playerSelection, computerSelection) {
-    var option = prompt('Choose out of 3').ignoreCase;
-
+function roundPlay() {
+   
+    if (computerPlay == userPlay) {
+        return ('Draw');
+    }
     
-    if (computerPlay)
+    else if (
+        (userPlay == 'scissors' && computerPlay == 'rock') ||
+        (userPlay == 'paper' && computerPlay == 'scissors') ||
+        (userPlay == 'rock' && computerPlay == 'paper')
+    )
+        { return ('You have won');}
+    
+    else if (
+        (computerPlay == 'scissors'  && userPlay == 'rock') ||
+        (computerPlay == 'paper'  && userPlay == 'scissors') ||
+        (computerPlay == 'rock'  && userPlay == 'paper')
+    )
+        { return ('You lose');}
+    
+    else 
+        {
+            return ('Re-Play');
+        }
 }
+
+let userSelection = userPlay();
+let computerSelection = computerPlay();
+
+alert(roundPlay(userSelection, computerSelection));
